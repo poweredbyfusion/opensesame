@@ -70,7 +70,7 @@ static volatile __bit reverseTxt = 0;
 #define STATIC_INDIC_OFF  0xac
 #define STATIC_INDIC_ON   0xad
 //missing booster ratio select
-#define NOP               0xe3
+#define NOP_CMD           0xe3
 #define OUTPUT_STATUS_SEL 0xc0
 #define TEST_RESET        0xf0
 #define OSC_FREQ_314      0xe4
