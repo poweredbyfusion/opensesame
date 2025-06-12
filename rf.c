@@ -34,8 +34,8 @@ u32 b0, b1;
 //#define b1   g.b1
 
 #ifdef LOCAL
-void rftx() { }
-void waitForTx() { }
+void rftx(void) { }
+void waitForTx(void) { }
 void printl(u8 line, char *str) { }
 int main() { db_send(); }
 u8 sequence[MAXLEN];
@@ -91,7 +91,7 @@ void db(u8 t, u8 p)
 }
 
 // converts our bits to the actual bitstream/modulation the garage expects
-void convert_bits()
+void convert_bits(void)
 {
 	u8 tlen;
 	u16 z;
@@ -133,7 +133,7 @@ void convert_bits()
 }
 
 // start the de bruijn sequence using the recursive db() function
-void de_bruijn()
+void de_bruijn(void)
 {
 	// clear a[], s
 	for (tmpi = 0; tmpi <= MAXBITS; tmpi++)
@@ -153,7 +153,7 @@ void de_bruijn()
 }
 
 // set FREQ registers in cc111x from a float
-void setFreq()
+void setFreq(void)
 {
 #define fnum (u32)(g.hz * ((0x10000 / 1000000.0) / MHZ))
 	FREQ2 = fnum >> 16;
@@ -162,7 +162,7 @@ void setFreq()
 }
 
 // set baudrate registers
-void setBaud()
+void setBaud(void)
 {
 	u8 drate_e = 0;
 	u8 drate_m = 0;
@@ -193,7 +193,7 @@ void setBaud()
 // prepare our transmission and keep the end for
 // the next transmission as the delay between packets
 // may prevent the de bruijn exploit from working
-void doTx()
+void doTx(void)
 {
 	// don't modify realbuf until we're done transmitting
 	// previous data since we're using DMA to TX
@@ -207,7 +207,7 @@ void doTx()
 }
 
 // create a de bruijn sequence according to what we want here
-void db_send()
+void db_send(void)
 {
 	// set power
 	// maximum power
