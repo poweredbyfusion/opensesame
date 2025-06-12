@@ -17,7 +17,7 @@
  * Boston, MA 02110-1301, USA.
  */
 
-void setup_pm_interrupt();
+void setup_pm_interrupt(void);
 void port1_isr() __interrupt (P1INT_VECTOR);
-void sleep();
-void chkSleep();
+void sleep(void);
+void chkSleep(void);
