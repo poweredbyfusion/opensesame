@@ -16,14 +16,14 @@ u8 realbuf[MAXLEN+1];
 extern __xdata u8 realbuf[MAXLEN+1];
 #endif
 
-void rftx();
-void waitForTx();
-void db_send();
+void rftx(void);
+void waitForTx(void);
+void db_send(void);
 void setBit(u8 *A, u16 b, __bit val);
 __bit testBit(u8 *A, u16 b);
 void db(u8 t, u8 p);
-void convert_bits();
-void de_bruijn();
-void setFreq();
-void setBaud();
-void doTx();
+void convert_bits(void);
+void de_bruijn(void);
+void setFreq(void);
+void setBaud(void);
+void doTx(void);
