@@ -31,10 +31,10 @@
 #include <stdio.h>
 
 void sleepMillis(int ms) {
-	int j;
-	while (--ms > 0) {
-		for (j=0; j<1200;j++); // about 1 millisecond
-	};
+        int j;
+        while (ms-- > 0) {
+                for (j=0; j<1200;j++); // about 1 millisecond
+        };
 }
 
 void xtalClock() { // Set system clock source to 26 Mhz
