@@ -262,17 +262,17 @@ int main(void)
  */
 void rf_isr_orig(void) __interrupt (RF_VECTOR)
 {
-        waitForTx();
-        txdone = 0;
-        LED_RED = LOW; // turn red led on
-        // enable RF interrupt and arm DMA for transmission
-        IEN2 |= IEN2_RFIE;             // enable RF interrupt
-        DMAARM |= DMAARM0;             // arm DMA channel 0
-        // begin transmission
+        /* clear interrupt flags */
+        RFIF &= ~RFIF_IRQ_DONE;
+        S1CON &= ~0x03;           // clear general RFIF interrupt registers
 
-        waitForTx();
+        /* signal that transmission has finished */
+        txdone = 1;
+
+        /* return to idle */
+        RFST = RFST_SIDLE;
+        LED_RED = HIGH; // turn red LED off
 }
-
 // transmit that badboy
 void rftx(void)
 {
