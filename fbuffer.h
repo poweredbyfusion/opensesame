@@ -11,13 +11,13 @@ void fb_setpixel(u16 i, u16 j);
 u8 fb_getpixel(u16 i, u16 j);
 
 //! Flush the FB to the LCD.
-void fb_flush();
+void fb_flush(void);
 
 //! Write a maskless sprite into the FB.
 void fb_bitblt(u8 *sprite, u16 x, u16 y, u8 frame);
 
 //! Clear the FB.
-void fb_blank();
+void fb_blank(void);
 
 //! Draw a horizontal line.
 void fb_horizline(u16 x, u16 y, u16 xp);
