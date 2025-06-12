@@ -156,8 +156,10 @@ void setup(void)
 #else
 	xtalClock();
 	setIOPorts();
-	configureSPI();
-	LCDReset();
+        configureSPI();
+        LCDReset();
+        /* enable global interrupts so RF ISR can fire */
+        EA = 1;
 
 	/* IF setting */
 	FSCTRL1   = 0x06;
