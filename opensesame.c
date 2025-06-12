@@ -125,7 +125,7 @@ __xdata u8 realbuf[MAXLEN+1];
 __bit sleepy = 0;
 __bit txFast = 0;
 
-extern u8 _garage_id = 0;
+u8 _garage_id = 0;
 
 void setup_dma_tx()
 {
