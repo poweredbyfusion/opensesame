@@ -19,8 +19,8 @@
 
 #include "types.h"
 
-u8 keyscan();
-u8 getkey();
+u8 keyscan(void);
+u8 getkey(void);
 
 // for sleeping
 #define DEBOUNCE_COUNT  4
