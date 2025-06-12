@@ -17,6 +17,7 @@ __xdata u8 fbuffer[FBHEIGHT     //eight stripes
 		   /8           //8 pixels/bit
 		   ];
 
+
 //! Clear the FB.
 void fb_blank(){
   u16 i;
@@ -31,7 +32,7 @@ void fb_flush(){
      internal bitmap format to the pixmap format of the LCD.
      Replacing this function and altering the buffer size should be
      sufficient to port this module to another platform. */
-  
+	
   u16 x, y, r;
   u8 col;
   
