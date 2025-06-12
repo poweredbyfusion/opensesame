@@ -24,6 +24,7 @@
 
 /* prepare an interrupt for the power button so it will wake us up */
 void setup_pm_interrupt(void) 
+{
 	/* clear the interrupt flags */
 	P1IFG &= ~BIT6;
 	P1IF = 0;
