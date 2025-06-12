@@ -1,4 +1,4 @@
-libs=display.rel rf.rel keys.rel fbuffer.rel zsprites.rel pm.rel
+libs=display.rel rf.rel keys.rel fbuffer.rel zsprites.rel pm.rel garages.rel
 simlibs=display.c.sim.rel rf.c.sim.rel keys.c.sim.rel
 CC=sdcc
 CFLAGS=#--no-pack-iram #--stack-auto
