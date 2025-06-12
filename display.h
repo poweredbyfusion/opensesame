@@ -24,11 +24,15 @@
 #include "types.h"
 
 // sdcc 3.7.0+ uses int putchar
-#if (SDCC_VERSION_HI == 3 && SDCC_VERSION_LO >= 7) || (SDCC_VERSION_HI >= 4)
-#define PUTCHAR_INT
-#define PUTCHAR_TYPE int
+#if defined(__SDCC_VERSION_MAJOR)
+# if (__SDCC_VERSION_MAJOR > 3) || (__SDCC_VERSION_MAJOR == 3 && __SDCC_VERSION_MINOR >= 7)
+#  define PUTCHAR_INT
+#  define PUTCHAR_TYPE int
+# else
+#  define PUTCHAR_TYPE void
+# endif
 #else
-#define PUTCHAR_TYPE void
+# define PUTCHAR_TYPE void
 #endif
 
 static volatile __bit reverseTxt = 0;
