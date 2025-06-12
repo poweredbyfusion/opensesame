@@ -203,7 +203,11 @@ void clear() {
 }
 
 /* sdcc provides printf if we provide this */
+#ifdef PUTCHAR_INT
+PUTCHAR_TYPE putchar(int c)
+#else
 PUTCHAR_TYPE putchar(char c)
+#endif
 {
 #ifdef SIMULATOR
 	while (!TI); /*  wait end of last transmission */
