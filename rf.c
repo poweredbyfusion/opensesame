@@ -226,7 +226,7 @@ void db_send()
 	CHANNR = 0x00;
 
 	// maximum channel bandwidth
-	setBaud();
+        setBaud();
 
 	bits    = g.bits;
 	len     = g.len;
