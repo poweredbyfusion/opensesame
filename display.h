@@ -81,7 +81,7 @@ static volatile __bit reverseTxt = 0;
 
 void sleepMillis(int ms);
 
-void xtalClock();
+void xtalClock(void);
 
 // IO Port Definitions:
 #define A0 P0_2
@@ -93,9 +93,9 @@ void xtalClock();
 // MOSI P0_3
 // SCK P0_5
 
-void setIOPorts();
+void setIOPorts(void);
 
-void configureSPI();
+void configureSPI(void);
 
 void tx(unsigned char ch);
 
@@ -105,7 +105,7 @@ void txCtl(unsigned char ch);
 
 void LCDReset(void);
 
-void LCDPowerSave();
+void LCDPowerSave(void);
 
 void setCursor(unsigned char row, unsigned char col);
 
@@ -119,8 +119,8 @@ void printlc(u8 line, u8 col, char *str);
 void printl(u8 line, char *str);
 void print(u8 line, char *str, ...);
 
-void clear();
-void UART_Init();
+void clear(void);
+void UART_Init(void);
 
 #ifndef LOCAL
 #ifdef PUTCHAR_INT
