@@ -158,8 +158,10 @@ void setup(void)
 	setIOPorts();
         configureSPI();
         LCDReset();
-        /* enable global interrupts so RF ISR can fire */
-        EA = 1;
+	/* enable global interrupts so RF ISR can fire */
+	EA = 1;
+	RFIM = RFIM_IM_DONE;
+	IEN2 |= IEN2_RFIE;
 
 	/* IF setting */
 	FSCTRL1   = 0x06;
