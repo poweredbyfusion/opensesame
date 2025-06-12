@@ -127,7 +127,7 @@ __bit txFast = 0;
 
 u8 _garage_id = 0;
 
-void setup_dma_tx()
+void setup_dma_tx(void)
 {
 	// forum guy used high priority and repeated single mode (TMODE = 2)
 	dmaConfig.PRIORITY       = 2;  // high priority
@@ -149,7 +149,7 @@ void setup_dma_tx()
 	return;
 }
 
-void setup()
+void setup(void)
 {
 #ifdef SIMULATOR
 	UART_Init();
@@ -260,7 +260,7 @@ int main(void)
  * - irq rf---
  * INTERRUPTING SERVICE ROUTINE RF VECTOR COMPLETE (done transmitting)
  */
-void rf_isr_orig() __interrupt (RF_VECTOR)
+void rf_isr_orig(void) __interrupt (RF_VECTOR)
 {
         waitForTx();
         txdone = 0;
@@ -274,7 +274,7 @@ void rf_isr_orig() __interrupt (RF_VECTOR)
 }
 
 // transmit that badboy
-void rftx()
+void rftx(void)
 {
         // wait for previous transmission to finish (if any)
         waitForTx();
@@ -297,7 +297,7 @@ void rftx()
 }
 
 // show nyancat while transmitting
-void waitForTx()
+void waitForTx(void)
 {
 	while (!txdone)
 	{
@@ -318,7 +318,7 @@ void waitForTx()
 }
 
 // from Michael Ossmann's epic IM-ME spectrum analyzer:
-void chkSleep()
+void chkSleep(void)
 {
 	u8 i;
 	/* go to sleep (more or less a shutdown) if power button pressed */
