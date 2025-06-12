@@ -18,8 +18,6 @@ Released June 4, 2015
 
 **Prevention:** If you are using a gate or garage which uses "fixed codes", to prevent this type of attack, ensure you upgrade to a system which clearly states that it's using **rolling codes, hopping codes, Security+ or Intellicode**. These are **not** foolproof from attack, but do prevent the OpenSesame attack along with traditional brute forcing attacks. Suggested vendors: current products from LiftMaster and Genie.
 
-**Criminals:** The code I've released is bricked to prevent you from abusing it. It *almost* works, but just not quite, and is released to educate. If you are an expert in RF and microcontrollers, you could fix it, but then you wouldn't need my help in the first place, would you.
-
 -----
 
 # (U) Capabilities
