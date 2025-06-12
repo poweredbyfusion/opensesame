@@ -13,7 +13,7 @@
 
 #include "types.h"
 
-__code const static struct {
+__code const struct {
 	u32 hz;
 	u32 baud;
 	u8 bits;
