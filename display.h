@@ -119,5 +119,9 @@ void clear();
 void UART_Init();
 
 #ifndef LOCAL
+#ifdef PUTCHAR_INT
+PUTCHAR_TYPE putchar(int c);
+#else
 PUTCHAR_TYPE putchar(char c);
+#endif
 #endif
