@@ -23,7 +23,7 @@
 #include "bits.h"
 
 /* prepare an interrupt for the power button so it will wake us up */
-void setup_pm_interrupt() {
+void setup_pm_interrupt(void) 
 	/* clear the interrupt flags */
 	P1IFG &= ~BIT6;
 	P1IF = 0;
@@ -42,7 +42,7 @@ void setup_pm_interrupt() {
 }
 
 /* power button interrupt service routine */
-void port1_isr() __interrupt (P1INT_VECTOR) {
+void port1_isr(void) __interrupt (P1INT_VECTOR) {
 	/* clear the interrupt flags */
 	P1IFG &= ~BIT6;
 	P1IF = 0;
@@ -57,7 +57,7 @@ void port1_isr() __interrupt (P1INT_VECTOR) {
  * critical here.  Do not edit this function without reading the Errata Note.
  */
 
-void sleep() {
+void sleep(void) {
 	volatile u8 desc_high = DMA0CFGH;
 	volatile u8 desc_low = DMA0CFGL;
 	//__xdata u8 dma_buf[7] = {0x07,0x07,0x07,0x07,0x07,0x07,0x04};
