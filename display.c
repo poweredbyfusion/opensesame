@@ -37,7 +37,8 @@ void sleepMillis(int ms) {
         };
 }
 
-void xtalClock() { // Set system clock source to 26 Mhz
+
+void xtalClock(void) { // Set system clock source to 26 Mhz
     SLEEP &= ~SLEEP_OSC_PD; // Turn both high speed oscillators on
     while( !(SLEEP & SLEEP_XOSC_S) ); // Wait until xtal oscillator is stable
     CLKCON = (CLKCON & ~(CLKCON_CLKSPD | CLKCON_OSC)) | CLKSPD_DIV_1; // Select xtal osc, 26 MHz
@@ -45,7 +46,7 @@ void xtalClock() { // Set system clock source to 26 Mhz
     SLEEP |= SLEEP_OSC_PD; // Turn off the other high speed oscillator (the RC osc)
 }
 
-void UART_Init()
+void UART_Init(void)
 {
 	SCON = 0x50; /*  configure serial */
 	TMOD = 0x20; /*  configure timer */
@@ -56,7 +57,7 @@ void UART_Init()
 	RI   = 0;    /*  waiting to receive */
 }
 
-void setIOPorts() {
+void setIOPorts(void) {
 	// No need to set PERCFG or P2DIR as default values on reset are fine
 	P0SEL |= (BIT5 | BIT3 ); // set SCK and MOSI as peripheral outputs
 	P0DIR |= BIT4 | BIT2; // set SSN and A0 as outputs
@@ -68,7 +69,8 @@ void setIOPorts() {
 #define SPI_BAUD_M  170
 #define SPI_BAUD_E  16
 
-void configureSPI() {
+
+void configureSPI(void) {
 	U0CSR = 0;  //Set SPI Master operation
 	U0BAUD =  SPI_BAUD_M; // set Mantissa
 	U0GCR = U0GCR_ORDER | SPI_BAUD_E; // set clock on 1st edge, -ve clock polarity, MSB first, and exponent
@@ -112,7 +114,7 @@ void LCDReset(void) {
 }
 
 /* initiate sleep mode */
-void LCDPowerSave() {
+void LCDPowerSave(void) {
 	txCtl(STATIC_INDIC_OFF);
 	txCtl(DISPLAY_OFF);
 	txCtl(ALL_POINTS_ON); // Display all Points on cmd = Power Save when following LCD off
@@ -182,7 +184,7 @@ void print(u8 line, char *str, ...)
 */
 
 /* clear all LCD pixels */
-void clear() {
+void clear(void) {
 	u8 row;
 	u8 col;
 
