@@ -276,24 +276,20 @@ void rf_isr_orig(void) __interrupt (RF_VECTOR)
 // transmit that badboy
 void rftx(void)
 {
-        // wait for previous transmission to finish (if any)
-        waitForTx();
+	// wait for previous transmission to finish (if any)
+	waitForTx();
 
-        txdone = 0;
-        LED_GREEN = HIGH; // turn green led off
-        LED_RED = LOW; // turn red led on
+	txdone = 0;
+	LED_GREEN = HIGH; // turn green led off
+	LED_RED = LOW; // turn red led on
 
-        // enable RF interrupt and arm DMA for transmission
-        EA = 1;                        // enable interrupts globally
-        IEN2 |= IEN2_RFIE;             // enable RF interrupt
-        RFIM = RFIM_IM_DONE;           // only trigger on TX done
-        DMAARM |= DMAARM0;             // arm DMA channel 0
+	RFST = RFST_STX;
+	
+	while (!txdone);
 
-        // begin transmission
-        RFST = RFST_STX;
-
-        // wait until DMA/ISR reports completion
-        waitForTx();
+ 	RFST = RFST_SIDLE;
+	sleepMillis(500);
+	txdone = 0;
 }
 
 // show nyancat while transmitting
