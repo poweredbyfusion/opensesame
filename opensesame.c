@@ -287,28 +287,30 @@ void rftx(void)
 	
 	while (!txdone);
 
- 	RFST = RFST_SIDLE;
-	sleepMillis(500);
-	txdone = 0;
+        RFST = RFST_SIDLE;
+        sleepMillis(500);
+        txdone = 0;
 }
 
-// transmit that badboy
-void rftx(void)
+// show nyancat while transmitting
+void waitForTx(void)
 {
-	// wait for previous transmission to finish (if any)
-	waitForTx();
-
-	txdone = 0;
-	LED_GREEN = HIGH; // turn green led off
-	LED_RED = LOW; // turn red led on
-
-	RFST = RFST_STX;
-	
-	while (!txdone);
-
- 	RFST = RFST_SIDLE;
-	sleepMillis(500);
-	txdone = 0;
+        while (!txdone)
+        {
+                if (!txFast)
+                {
+                        // this slows down the tx quite a bit
+                        title;
+                        fb_blank();
+                        fb_bitblt((__xdata u8*) nyan[ni++], 30, 20, 0);
+                        fb_flush();
+                        //printl(0, "      OpenSesame    ");
+                        title;
+                        printl(1, "     Transmitting   ");
+                        if (ni >= NYANS)
+                                ni = 0;
+                }
+        }
 }
 
 // from Michael Ossmann's epic IM-ME spectrum analyzer:
